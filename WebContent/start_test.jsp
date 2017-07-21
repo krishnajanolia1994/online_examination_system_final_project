@@ -94,6 +94,8 @@ footer{
 	<div>
 		 <ul class="nav navbar-nav">
         <li class="active"><a href="#intro">Home</a></li>
+         <li class="active"><a href="student_logout.jsp">logout</a></li>
+        
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login Menu <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -103,6 +105,7 @@ footer{
         </li>
       </ul>
       <p>
+      <span>time left</span>
       <span id ="h"><%= hour %></span>
       <span id ="m"><%= min %></span>
       <span id ="s"><%= sec %></span>
@@ -147,39 +150,48 @@ footer{
    	</div>
   </form>
 </div>
- <footer><p>  
-           <input class="button" type="submit" value="logout" align="left">                         <br>      </p>
+ <footer>
+ <br><br>
  </footer>
  </div>
  <script >
  
- var h=document.getElementById("h").value;
+ var h=<%=hour %>
  
- var m=document.getElementById("m").value;
- var s=document.getElementById("s").value;
+ var m=<%=min %>;
+ var s=<%=sec %>;
   function update()
  {
 	 if(s==0)
 		 {
-		 	s=60;
-		 	m--;
+		 	if(m>0)
+		 		{
+		 		s=59;
+			 	m--;
+		 		}
+		 	
 		 	if(m==0)
 		 		{
+		 		if(h>0)
+		 			{
+		 			m=59;
 		 			h--;
+		 			}
+		 		
 		 			if(h==0)
 		 				if(m==0)
 		 					if(s==0)
-		 						document.getElement.ById("test").submit();
+		 						document.getElementById("test").submit();
 		 		}
 		 
 		 }
 	 else
 		 s--;
-	 document.getElementById("h").innerHTML=h;
-	 document.getElementById("m").innerHTML=m;
+	 document.getElementById("h").innerHTML=h+" : ";
+	 document.getElementById("m").innerHTML=m+" : ";
 	 document.getElementById("s").innerHTML=s;
  }
- window.onload = setInterva(update , 1000);
+ window.onload = setInterval(update , 1000);
  </script>
 </body>
 </html>
