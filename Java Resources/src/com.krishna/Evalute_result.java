@@ -55,10 +55,11 @@ public class Evalute_result extends HttpServlet
 					pr.println(ans_obtain);
 					pr.println(right_index);
 					pr.println(Correct_answer);
-					if(ans_obtain.equals(Correct_answer))
-					{
-						marks_obtain++;
-					}
+					if(ans_obtain!=null)
+						if(ans_obtain.equals(Correct_answer))
+						{
+							marks_obtain++;
+						}
 					total_marks++;
 					i+=5;
 					
